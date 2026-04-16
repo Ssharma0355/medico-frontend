@@ -45,10 +45,10 @@ const Navbar = () => {
                 <img className='w-10 h-10 rounded-full' src={assets.profile_pic} alt="Profile" />
                 <img className='w-3' src={assets.dropdown_icon} alt="dropdown_icon" />
                 <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
-                    <div className='min-w-60 bg-stone-100 flex flex-col p-4 rounded'>
-                        <p>My Profile</p>
-                        <p>My Appoitment</p>
-                        <p>Log out</p>
+                    <div className='min-w-[218px] bg-[#F8F8F8] text-[18px] flex flex-col p-4 rounded'>
+                        <p className='cursor-pointer'>My Profile</p>
+                        <p className='cursor-pointer'>My Appoitment</p>
+                        <p className='cursor-pointer text-red-400'>Log out</p>
                     </div>
                 </div>
             </div>
