@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import {assets} from "../assets/assets_frontend/assets"
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [shoeMenu, isShowMenu] = useState(false);
+  const [token, isToken] = useState(true);
+
+  const navigate = useNavigate()
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -35,9 +40,16 @@ const Navbar = () => {
 
         {/* Desktop Button */}
         <div className='hidden md:block'>
-          <button className='bg-blue-500 text-white px-4 py-2 rounded'>
+            { token ? 
+            <div className='flex gap-2 items-center'>
+                <img className='w-10 h-10 rounded-full' src={assets.profile_pic} alt="Profile" />
+                <img className='w-3' src={assets.dropdown_icon} alt="dropdown_icon" />
+            </div>
+            :  
+            <button onClick={()=>navigate("/login")} className='bg-blue-500 text-white px-4 py-2 rounded'>
             Create Account
-          </button>
+          </button>}
+         
         </div>
 
         {/* Mobile Hamburger */}
@@ -66,10 +78,18 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+         <div>
+             {token ? 
+              <div>
+                <img src={assets.patients_icon} alt="Profile" />
 
-          <button className='mt-4 w-full bg-blue-500 text-white py-2 rounded'>
-            Create Account
-          </button>
+            </div> :
+               <button onClick={()=>navigate("/login")} className='mt-4 w-full bg-blue-500 text-white py-2 rounded'>
+               Create Account
+             </button>
+             }
+         </div>
+      
         </div>
       )}
     </div>
