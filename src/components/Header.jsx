@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { assets } from '../assets/assets_frontend/assets'
+import { useNavigate } from 'react-router-dom';
 
 const cards = [
   {
@@ -35,7 +36,8 @@ const cards = [
 ]
 
 function Header() {
-  const [current, setCurrent] = useState(0)
+  const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,7 +58,7 @@ function Header() {
         {cards.map((card, index) => (
           <div
             key={index}
-            className={`min-w-[25%] h-[300px] rounded-xl p-6 text-white flex flex-col justify-between shadow-lg ${card.color}`}
+            className={`min-w-[30%] h-[300px] rounded-xl p-6 text-white flex flex-col justify-between shadow-lg ${card.color}`}
           >
             {/* TOP */}
             <div>
@@ -78,7 +80,7 @@ function Header() {
             </div>
 
             {/* BUTTON */}
-            <button className="bg-white text-black py-2 rounded-full text-sm font-medium hover:scale-105 transition">
+            <button onClick={()=> navigate("/login")} className="bg-white text-black py-2 rounded-full text-sm font-medium hover:scale-105 transition">
               Explore →
             </button>
           </div>
