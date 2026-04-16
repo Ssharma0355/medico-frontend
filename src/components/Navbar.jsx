@@ -41,9 +41,16 @@ const Navbar = () => {
         {/* Desktop Button */}
         <div className='hidden md:block'>
             { token ? 
-            <div className='flex gap-2 items-center'>
+            <div className='flex gap-2 items-center relative group inline-block'>
                 <img className='w-10 h-10 rounded-full' src={assets.profile_pic} alt="Profile" />
                 <img className='w-3' src={assets.dropdown_icon} alt="dropdown_icon" />
+                <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
+                    <div className='min-w-[218px] bg-[#F8F8F8] text-[18px] flex flex-col p-4 rounded'>
+                        <p onClick={()=>navigate("/my-profile")} className='hover:text-black cursor-pointer'>My Profile</p>
+                        <p onClick={()=>navigate("/my-appointment")} className='hover:text-black cursor-pointer'>My Appoitment</p>
+                        <p className='hover:text-red-400 cursor-pointer'>Log out</p>
+                    </div>
+                </div>
             </div>
             :  
             <button onClick={()=>navigate("/login")} className='bg-blue-500 text-white px-4 py-2 rounded'>
