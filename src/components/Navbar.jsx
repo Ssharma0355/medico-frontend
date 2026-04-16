@@ -5,7 +5,7 @@ import {assets} from "../assets/assets_frontend/assets"
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [shoeMenu, isShowMenu] = useState(false);
-  const [token, isToken] = useState(true);
+  const [token, setToken] = useState(true);
 
   const navigate = useNavigate()
 
@@ -48,7 +48,7 @@ const Navbar = () => {
                     <div className='min-w-[218px] bg-[#F8F8F8] text-[18px] flex flex-col p-4 rounded'>
                         <p onClick={()=>navigate("/my-profile")} className='hover:text-black cursor-pointer'>My Profile</p>
                         <p onClick={()=>navigate("/my-appointment")} className='hover:text-black cursor-pointer'>My Appoitment</p>
-                        <p className='hover:text-red-400 cursor-pointer'>Log out</p>
+                        <p onClick={()=>setToken(false)}className='hover:text-red-400 cursor-pointer'>Log out</p>
                     </div>
                 </div>
             </div>
