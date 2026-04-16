@@ -13,7 +13,7 @@ import Navbar from './components/Navbar'
 
 const App = () => {
   return (
-    <h1 className="mx-4 sm-mx-[10%]">
+    <h1 className="mx-4 sm:mx-[10%]">
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
