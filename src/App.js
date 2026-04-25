@@ -14,7 +14,7 @@ import Footer from './components/Footer'
 
 const App = () => {
   return (
-    <h1 className="mx-4 sm:mx-[10%]">
+    <h1 className="mx-4 sm:mx-[5%]">
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
