@@ -25,11 +25,11 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/my-profile' element={<MyProfile />} />
         <Route path='/my-appointment' element={<MyAppointment />} />
-        <Route path='/my-appointment/:doctorid' element={<Appointment />} />
+        <Route path='/appointment/:docId' element={<Appointment />} />
         <Route path='/*' element={<PageNotFound />} />
       </Routes>
       <Footer />
-  </h1>
+    </h1>
   )
 }
 
