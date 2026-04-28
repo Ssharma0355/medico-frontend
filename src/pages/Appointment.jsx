@@ -207,6 +207,8 @@ const Appointment = () => {
             </button>
           </div>
 
+          <RelatedDoctors docId={docId} speciality={speciality} />
+
         </div>
       ) : (
         <p className="text-center text-gray-500">
