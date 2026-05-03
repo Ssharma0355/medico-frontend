@@ -25,7 +25,7 @@ const Contact = () => {
 
             <div className="space-y-4 text-gray-700">
               <p><strong>Email:</strong> support@healthcare.com</p>
-              <p><strong>Phone:</strong> +91 98765 43210</p>
+              <p><strong>Phone:</strong> +91 9876XXXXX XX</p>
               <p><strong>Address:</strong> Patna, Bihar, India</p>
             </div>
           </div>
