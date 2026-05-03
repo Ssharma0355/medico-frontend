@@ -11,6 +11,7 @@ import PageNotFound from './pages/PageNotFound'
 import Appointment from './pages/Appointment'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Signup from './pages/Signup'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='/my-profile' element={<MyProfile />} />
         <Route path='/my-appointment' element={<MyAppointment />} />
         <Route path='/appointment/:docId' element={<Appointment />} />
+        <Route path='/signup' element={<Signup />}/>
         <Route path='/*' element={<PageNotFound />} />
       </Routes>
       <Footer />
