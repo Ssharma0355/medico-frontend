@@ -1,9 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../context/AppContext'
+import { useNavigate } from 'react-router-dom'
+
 
 function RelatedDoctors({ docId, speciality }) {
   const { doctors } = useContext(AppContext)
   const [relDoc, setRelDoc] = useState([])
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     if (doctors.length > 0 && speciality) {
@@ -16,6 +20,15 @@ function RelatedDoctors({ docId, speciality }) {
       setRelDoc(doctorsData)
     }
   }, [doctors, docId, speciality])
+
+  const handleRelatedDoctor =(id)=>{
+    navigate(`/appointment/${id}`)
+    window.scroll({
+      top:0,
+      behavior:'smooth'
+    })
+
+  }
 
   return (
     <div className="mt-16">
@@ -54,7 +67,10 @@ function RelatedDoctors({ docId, speciality }) {
                 {doc.speciality}
               </p>
 
-              <button className="mt-4 w-full bg-primary text-white py-2 rounded-lg hover:opacity-90 transition">
+              <button onClick={(e)=>{
+                e.stopPropagation()
+                handleRelatedDoctor(doc._id)
+              }} className="mt-4 w-full bg-primary text-white py-2 rounded-lg hover:opacity-90 transition">
                 Book Appointment
               </button>
             </div>
