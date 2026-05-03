@@ -39,11 +39,6 @@ function RelatedDoctors({ docId, speciality }) {
               src={doc.image}
               alt={doc.name}
             />
-             <img
-              className="bg-blue-50 w-full h-56 object-cover"
-              src={doc.image}
-              alt={doc.name}
-            />
 
             <div className="p-5">
               <div className="flex items-center gap-2 text-sm text-green-500">
