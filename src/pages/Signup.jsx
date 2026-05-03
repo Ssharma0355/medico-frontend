@@ -8,17 +8,19 @@ function Signup() {
         password: ""
       })
       const navigate = useNavigate()
+
       const handleSignup =(e)=>{
         const {name, value} = e.target
         setSignupState((prev)=>({
             ...prev,
             [name]:value
         }))
-
       }
-      const submitSignup =()=>{
 
-      }
+      const submitSignup = (e) => {
+        e.preventDefault(); // Stops the browser from reloading the page
+        console.log(signupState);
+      };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
