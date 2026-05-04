@@ -14,18 +14,29 @@ const MyProfile = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [formData, setFormData] = useState(userInfo)
 
-  // Handle input change
+  // Generate initials dynamically
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map(word => word[0])
+      .join("")
+      .toUpperCase()
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target
+
     setFormData((prev) => ({
       ...prev,
       [name]: value
     }))
   }
 
-  // Save changes
   const handleSave = () => {
-    setUserInfo(formData)
+    setUserInfo({
+      ...formData,
+      profile: getInitials(formData.name)
+    })
     setIsOpen(false)
   }
 
@@ -76,69 +87,85 @@ const MyProfile = () => {
 
       {/* ✅ Modal */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          
-          <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-md">
-            
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-md"
+          >
             <h2 className="text-xl font-semibold mb-4">
               Edit Profile
             </h2>
 
-            <div className="space-y-3">
-              
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Name"
-                className="w-full border p-2 rounded"
-              />
+            <div className="space-y-4">
 
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email"
-                className="w-full border p-2 rounded"
-              />
+              <div>
+                <label className="text-sm text-gray-600">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded mt-1"
+                />
+              </div>
 
-              <input
-                type="text"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Phone"
-                className="w-full border p-2 rounded"
-              />
+              <div>
+                <label className="text-sm text-gray-600">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded mt-1"
+                />
+              </div>
 
-              <input
-                type="text"
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                placeholder="Gender"
-                className="w-full border p-2 rounded"
-              />
+              <div>
+                <label className="text-sm text-gray-600">Phone</label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded mt-1"
+                />
+              </div>
 
-              <input
-                type="text"
-                name="dob"
-                value={formData.dob}
-                onChange={handleChange}
-                placeholder="Date of Birth"
-                className="w-full border p-2 rounded"
-              />
+              <div>
+                <label className="text-sm text-gray-600">Gender</label>
+                <input
+                  type="text"
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded mt-1"
+                />
+              </div>
 
-              <input
-                type="number"
-                name="age"
-                value={formData.age}
-                onChange={handleChange}
-                placeholder="Age"
-                className="w-full border p-2 rounded"
-              />
+              <div>
+                <label className="text-sm text-gray-600">Date of Birth</label>
+                <input
+                  type="text"
+                  name="dob"
+                  value={formData.dob}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded mt-1"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm text-gray-600">Age</label>
+                <input
+                  type="number"
+                  name="age"
+                  value={formData.age}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded mt-1"
+                />
+              </div>
 
             </div>
 
