@@ -89,7 +89,6 @@ const Navbar = () => {
              {token ? 
               <div>
                 <img src={assets.patients_icon} alt="Profile" />
-
             </div> :
                <button onClick={()=>navigate("/login")} className='mt-4 w-full bg-blue-500 text-white py-2 rounded'>
                Create Account
