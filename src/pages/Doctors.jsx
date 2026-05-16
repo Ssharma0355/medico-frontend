@@ -7,10 +7,6 @@ const Doctors = () => {
   const navigate = useNavigate();
   const [openFilter, setOpenFilter] = useState(false);
 
-  const showFilter =()=>{
-    setOpenFilter(prev => !prev)
-    console.log(openFilter)
-  }
 
   // Unique specialities only
   const specialities = [...new Set(doctors.map((doc) => doc.speciality))];
@@ -18,80 +14,77 @@ const Doctors = () => {
   // Filter doctors based on URL param
   const filteredDoctors = speciality
     ? doctors.filter(
-        (doc) =>
-          doc.speciality.toLowerCase().replace(/\s+/g, "-") === speciality
-      )
+      (doc) =>
+        doc.speciality.toLowerCase().replace(/\s+/g, "-") === speciality
+    )
     : doctors;
 
   return (
     <div className="px-6 md:px-10 lg:px-20 py-12">
       <div className="flex flex-col md:flex-row gap-8">
-        
+
         {/* LEFT SIDEBAR */}
-      {/* LEFT SIDEBAR */}
-<div className="md:w-1/4">
+        <div className="md:w-1/4">
 
-<h2 className="text-xl font-semibold mb-4">
-  Specialities
-</h2>
+          <h2 className="text-xl font-semibold mb-4">
+            Specialities
+          </h2>
 
-{/* Mobile Filter Button */}
-<button
-  className="md:hidden px-4 py-2 bg-indigo-600 text-white rounded-lg mb-4"
-  onClick={() => setOpenFilter((prev) => !prev)}
->
-  {openFilter ? "Close Filters" : "Show Filters"}
-</button>
+          {/* Mobile Filter Button */}
+          <button
+            className="md:hidden px-4 py-2 bg-indigo-600 text-white rounded-lg mb-4"
+            onClick={() => setOpenFilter((prev) => !prev)}
+          >
+            {openFilter ? "Close Filters" : "Show Filters"}
+          </button>
 
-{/* Filter List */}
-<div className={`${openFilter ? "block" : "hidden"} md:block`}>
+          {/* Filter List */}
+          <div className={`${openFilter ? "block" : "hidden"} md:block`}>
 
-  <ul className="space-y-3">
+            <ul className="space-y-3">
 
-    {/* All Doctors */}
-    <li
-      onClick={() => {
-        navigate("/doctors");
-        setOpenFilter(false);
-      }}
-      className={`cursor-pointer px-4 py-2 rounded-lg border transition
-      ${
-        !speciality
-          ? "bg-indigo-600 text-white"
-          : "hover:bg-gray-100"
-      }`}
-    >
-      All Doctors
-    </li>
+              {/* All Doctors */}
+              <li
+                onClick={() => {
+                  navigate("/doctors");
+                  setOpenFilter(false);
+                }}
+                className={`cursor-pointer px-4 py-2 rounded-lg border transition
+                ${!speciality
+                    ? "bg-indigo-600 text-white"
+                    : "hover:bg-gray-100"
+                  }`}
+              >
+                All Doctors
+              </li>
 
-    {/* Specialities */}
-    {specialities.map((special, index) => {
+              {/* Specialities */}
+              {specialities.map((special, index) => {
 
-      const slug = special
-        .toLowerCase()
-        .replace(/\s+/g, "-");
+                const slug = special
+                  .toLowerCase()
+                  .replace(/\s+/g, "-");
 
-      return (
-        <li
-          key={index}
-          onClick={() => {
-            navigate(`/doctors/${slug}`);
-            setOpenFilter(false);
-          }}
-          className={`cursor-pointer px-4 py-2 rounded-lg border transition
-          ${
-            speciality === slug
-              ? "bg-indigo-600 text-white"
-              : "hover:bg-gray-100"
-          }`}
-        >
-          {special}
-        </li>
-      );
-    })}
-  </ul>
-</div>
-</div>
+                return (
+                  <li
+                    key={index}
+                    onClick={() => {
+                      navigate(`/doctors/${slug}`);
+                      setOpenFilter(false);
+                    }}
+                    className={`cursor-pointer px-4 py-2 rounded-lg border transition
+          ${speciality === slug
+                        ? "bg-indigo-600 text-white"
+                        : "hover:bg-gray-100"
+                      }`}
+                  >
+                    {special}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
 
         {/* RIGHT CONTENT */}
         <div className="md:w-3/4">
